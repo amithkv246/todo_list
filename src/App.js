@@ -6,27 +6,28 @@ import Card from "./components/card"
 
 export default function App() {
 
-  const [todos, setTodo] = useState([
-    "Learn React JS",
-    "Learn Angular JS",
-    "Learn React Native"
-  ])
-
+  const [todos, setTodo] = useState([])
+  const [input, setInput] = useState("hi")
+  function handleAdd() {
+    // setTodo([...todos, input])
+    setTodo((prevArray) => [...todos, input])
+  }
   return (
     <>
       <div className="container my-2">
         <Heading1 value={"TODO LIST"} className="text-center" style={{ color: "#255cd1" }} />
         <div className="d-flex gap-3 py-3">
           <Input type={"text"} placeholder={" type something you want to do . . . "} />
-          <Button value={"Add"} />
+          <Button value={"Add"} onClick={handleAdd} />
         </div>
-        <div className="d-flex gap-3">
+        <div className="grid row">
           {
-            todos.map((item, index) => (
-              <div key={index + "todos"}>
-                <Card item={item} index={index}/>
-              </div>
-            ))
+            todos.length > 0 ?
+              todos.map((item, index) => (
+                <div className="col-3 p-1"><Card item={item} key={index + "todos"} /></div>
+              ))
+              :
+              (<div><p>Nothing to show.</p></div>)
           }
         </div>
       </div>
