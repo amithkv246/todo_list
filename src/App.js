@@ -41,13 +41,13 @@ export default function App() {
           <Button value={"Add"} onClick={handleAdd} />
         </div>
         <div className="grid row">
-          <div className="col-6 p-3">
+          <div className="col-6 p-3 pe-4">
             <p className="fs-3 text-primary">Tasks to do</p>
             <div className="grid row">
               {
                 todos.length > 0 ?
                   todos.map((item, index) => (
-                    <div className="col-5 p-1">
+                    <div className="col-4 p-1">
                       <Card item={item} key={index + "todos"} onDelete={() => handleDelete(index)} onDone={() => handleDone(index)} />
                     </div>
                   ))
@@ -57,13 +57,13 @@ export default function App() {
             </div>
           </div>
 
-          <div className="col-6 p-3">
+          <div className="col-6 p-3 ps-4">
             <p className="fs-3 text-success" >Completed Tasks</p>
             <div className="grid row">
               {
                 completedTodos.length > 0 ?
                   completedTodos.map((item, index) => (
-                    <div className="col-5 p-1">
+                    <div className="col-4 p-1">
                       <Card item={item} key={index + "completedTodos"} onDelete={() => handleCompletedDelete(index)} />
                     </div>
                   ))
